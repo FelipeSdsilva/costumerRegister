@@ -1,12 +1,15 @@
 package com.conquistsuavaga.custoregis.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.conquistsuavaga.custoregis.entities.enums.PhoneType;
@@ -22,11 +25,11 @@ public class Phone implements Serializable {
 	private PhoneType type;
 	private String number;
 
-	
+	@ManyToMany(mappedBy = "phones")
+	private Set<Client> clients = new HashSet<>();
+
 	public Phone() {
 	}
-	
-	
 
 	public Long getId() {
 		return id;
@@ -50,6 +53,10 @@ public class Phone implements Serializable {
 
 	public void setNumber(String number) {
 		this.number = number;
+	}
+
+	public Set<Client> getClients() {
+		return clients;
 	}
 
 	@Override
