@@ -1,6 +1,7 @@
 package com.conquistsuavaga.custoregis.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,13 @@ public class PhoneService {
 	public List<PhoneDTO> findAll() {
 		List<Phone> phoneList = phoneRepository.findAll();
 		return phoneList.stream().map(x -> new PhoneDTO(x)).collect(Collectors.toList());
+	}
+
+	@Transactional(readOnly = true)
+	public PhoneDTO findById(Long id) {
+		Optional<Phone> obj = phoneRepository.findById(id);
+		Phone phone = obj.get();
+		return new PhoneDTO(phone);
 	}
 
 }

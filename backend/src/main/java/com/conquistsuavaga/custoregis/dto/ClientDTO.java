@@ -1,11 +1,14 @@
 package com.conquistsuavaga.custoregis.dto;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.HashSet;
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
+import com.conquistsuavaga.custoregis.entities.Address;
 import com.conquistsuavaga.custoregis.entities.Client;
+import com.conquistsuavaga.custoregis.entities.Phone;
 
 public class ClientDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -16,27 +19,26 @@ public class ClientDTO implements Serializable {
 	private String email;
 	private char gender;
 	private String cpf;
-	private Date birthday;
+	private Instant birthDate;
 	private Integer numberHouse;
 	private String complement;
 
-	private Set<AddressDTO> adresses = new HashSet<>();
+	private List<AddressDTO> adresses = new ArrayList<>();
 
-	private Set<PhoneDTO> phones = new HashSet<>();
+	private List<PhoneDTO> phones = new ArrayList<>();
 
 	public ClientDTO() {
 	}
 
-	public ClientDTO(Long id, String name, String lastName, String email, char gender, String cpf, Date birthday,
+	public ClientDTO(Long id, String name, String lastName, String email, char gender, String cpf, Instant birthDate,
 			Integer numberHouse, String complement) {
-		super();
 		this.id = id;
 		this.name = name;
 		this.lastName = lastName;
 		this.email = email;
 		this.gender = gender;
 		this.cpf = cpf;
-		this.birthday = birthday;
+		this.birthDate = birthDate;
 		this.numberHouse = numberHouse;
 		this.complement = complement;
 	}
@@ -48,9 +50,15 @@ public class ClientDTO implements Serializable {
 		email = entity.getEmail();
 		gender = entity.getGender();
 		cpf = entity.getCpf();
-		birthday = entity.getBirthday();
+		birthDate = entity.getBirthDate();
 		numberHouse = entity.getNumberHouse();
 		complement = entity.getComplement();
+	}
+
+	public ClientDTO(Client entity, Set<Address> adresses, Set<Phone> phones) {
+		this(entity);
+		adresses.forEach(address -> this.adresses.add(new AddressDTO(address)));
+		phones.forEach(phone -> this.phones.add(new PhoneDTO(phone)));
 	}
 
 	public Long getId() {
@@ -101,12 +109,12 @@ public class ClientDTO implements Serializable {
 		this.cpf = cpf;
 	}
 
-	public Date getBirthday() {
-		return birthday;
+	public Instant getBirthDate() {
+		return birthDate;
 	}
 
-	public void setBirthday(Date birthday) {
-		this.birthday = birthday;
+	public void setBirthDate(Instant birthDate) {
+		this.birthDate = birthDate;
 	}
 
 	public Integer getNumberHouse() {
@@ -125,11 +133,11 @@ public class ClientDTO implements Serializable {
 		this.complement = complement;
 	}
 
-	public Set<AddressDTO> getAdresses() {
+	public List<AddressDTO> getAdresses() {
 		return adresses;
 	}
 
-	public Set<PhoneDTO> getPhones() {
+	public List<PhoneDTO> getPhones() {
 		return phones;
 	}
 }

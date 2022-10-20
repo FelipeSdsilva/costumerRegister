@@ -31,6 +31,12 @@ public class Phone implements Serializable {
 	public Phone() {
 	}
 
+	public Phone(Long id, PhoneType type, String number) {
+		this.id = id;
+		this.type = type;
+		this.number = number;
+	}
+
 	public Long getId() {
 		return id;
 	}

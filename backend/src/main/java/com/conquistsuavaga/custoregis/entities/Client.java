@@ -1,7 +1,7 @@
 package com.conquistsuavaga.custoregis.entities;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.Instant;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -31,7 +31,7 @@ public class Client implements Serializable {
 	private String cpf;
 	
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-	private Date birthday;
+	private Instant birthDate;
 	private Integer numberHouse;
 	private String complement;
 
@@ -50,7 +50,7 @@ public class Client implements Serializable {
 	public Client() {
 	}
 
-	public Client(Long id, String name, String lastName, String email, char gender, String cpf, Date birthday,
+	public Client(Long id, String name, String lastName, String email, char gender, String cpf, Instant birthDate,
 			Integer numberHouse, String complement) {
 		this.id = id;
 		this.name = name;
@@ -58,7 +58,7 @@ public class Client implements Serializable {
 		this.email = email;
 		this.gender = gender;
 		this.cpf = cpf;
-		this.birthday = birthday;
+		this.birthDate = birthDate;
 		this.numberHouse = numberHouse;
 		this.complement = complement;
 	}
@@ -111,12 +111,12 @@ public class Client implements Serializable {
 		this.cpf = cpf;
 	}
 
-	public Date getBirthday() {
-		return birthday;
+	public Instant getBirthDate() {
+		return birthDate;
 	}
 
-	public void setBirthday(Date birthday) {
-		this.birthday = birthday;
+	public void setBirthDate(Instant birthDate) {
+		this.birthDate = birthDate;
 	}
 
 	public Integer getNumberHouse() {
