@@ -22,6 +22,8 @@ public class ClientDTO implements Serializable {
 
 	private Set<AddressDTO> adresses = new HashSet<>();
 
+	private Set<PhoneDTO> phones = new HashSet<>();
+
 	public ClientDTO() {
 	}
 
@@ -125,5 +127,9 @@ public class ClientDTO implements Serializable {
 
 	public Set<AddressDTO> getAdresses() {
 		return adresses;
+	}
+
+	public Set<PhoneDTO> getPhones() {
+		return phones;
 	}
 }

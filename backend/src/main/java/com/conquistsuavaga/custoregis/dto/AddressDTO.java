@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import com.conquistsuavaga.custoregis.entities.Address;
 
-
 public class AddressDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 

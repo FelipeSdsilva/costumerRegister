@@ -2,6 +2,7 @@ package com.conquistsuavaga.custoregis.dto;
 
 import java.io.Serializable;
 
+import com.conquistsuavaga.custoregis.entities.Phone;
 import com.conquistsuavaga.custoregis.entities.enums.PhoneType;
 
 public class PhoneDTO implements Serializable {
@@ -10,7 +11,7 @@ public class PhoneDTO implements Serializable {
 	private Long id;
 	private PhoneType type;
 	private String number;
-	
+
 	public PhoneDTO() {
 	}
 
@@ -20,7 +21,12 @@ public class PhoneDTO implements Serializable {
 		this.number = number;
 	}
 
-	
+	public PhoneDTO(Phone entity) {
+		id = entity.getId();
+		type = entity.getType();
+		number = entity.getNumber();
+	}
+
 	public Long getId() {
 		return id;
 	}
