@@ -1,8 +1,12 @@
 package com.conquistsuavaga.custoregis.dto;
 
+import java.io.Serializable;
+
 import com.conquistsuavaga.custoregis.entities.Address;
 
-public class AddressDTO {
+
+public class AddressDTO implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	private Long id;
 	private String street;
