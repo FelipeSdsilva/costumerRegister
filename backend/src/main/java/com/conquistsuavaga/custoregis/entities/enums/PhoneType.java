@@ -2,7 +2,9 @@ package com.conquistsuavaga.custoregis.entities.enums;
 
 public enum PhoneType {
 
-	HOME(1), WORK(2), CELLPHONE(3);
+	HOME(1),
+	WORK(2), 
+	CELLPHONE(3);
 
 	private int code;
 

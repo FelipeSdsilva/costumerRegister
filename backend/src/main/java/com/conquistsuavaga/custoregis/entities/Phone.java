@@ -22,7 +22,7 @@ public class Phone implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private PhoneType type;
+	private Integer type;
 	private String number;
 
 	@ManyToMany(mappedBy = "phones")
@@ -33,7 +33,7 @@ public class Phone implements Serializable {
 
 	public Phone(Long id, PhoneType type, String number) {
 		this.id = id;
-		this.type = type;
+		setType(type);
 		this.number = number;
 	}
 
@@ -46,11 +46,13 @@ public class Phone implements Serializable {
 	}
 
 	public PhoneType getType() {
-		return type;
+		return PhoneType.valueOf(type);
 	}
 
 	public void setType(PhoneType type) {
-		this.type = type;
+		if (type != null) {
+			this.type = type.getCode();
+		}
 	}
 
 	public String getNumber() {

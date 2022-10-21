@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.conquistsuavaga.custoregis.dto.PhoneDTO;
 import com.conquistsuavaga.custoregis.entities.Phone;
 import com.conquistsuavaga.custoregis.repositories.PhoneRepository;
+import com.conquistsuavaga.custoregis.service.exceptions.ResourceNotFoundException;
 
 @Service
 public class PhoneService {
@@ -27,7 +28,7 @@ public class PhoneService {
 	@Transactional(readOnly = true)
 	public PhoneDTO findById(Long id) {
 		Optional<Phone> obj = phoneRepository.findById(id);
-		Phone phone = obj.get();
+		Phone phone = obj.orElseThrow(() -> new ResourceNotFoundException("Id not found"));
 		return new PhoneDTO(phone);
 	}
 
