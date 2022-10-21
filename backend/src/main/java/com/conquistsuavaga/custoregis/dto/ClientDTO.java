@@ -17,7 +17,7 @@ public class ClientDTO implements Serializable {
 	private String name;
 	private String lastName;
 	private String email;
-	private char gender;
+	private String gender;
 	private String cpf;
 	private Instant birthDate;
 	private Integer numberHouse;
@@ -30,7 +30,7 @@ public class ClientDTO implements Serializable {
 	public ClientDTO() {
 	}
 
-	public ClientDTO(Long id, String name, String lastName, String email, char gender, String cpf, Instant birthDate,
+	public ClientDTO(Long id, String name, String lastName, String email, String gender, String cpf, Instant birthDate,
 			Integer numberHouse, String complement) {
 		this.id = id;
 		this.name = name;
@@ -93,11 +93,11 @@ public class ClientDTO implements Serializable {
 		this.email = email;
 	}
 
-	public char getGender() {
+	public String getGender() {
 		return gender;
 	}
 
-	public void setGender(char gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 

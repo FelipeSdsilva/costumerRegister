@@ -30,4 +30,21 @@ public class AddressService {
 		Address address = obj.get();
 		return new AddressDTO(address);
 	}
+
+	public AddressDTO insert(AddressDTO addressDTO) {
+		Address entity = new Address();
+		converterDtoInEntity(addressDTO,entity);
+		entity = addressRepository.save(entity);
+		return new AddressDTO(entity);
+	}
+
+	private void converterDtoInEntity(AddressDTO addressDTO, Address entity) {
+		
+		entity.setStreet(addressDTO.getStreet());
+		entity.setDistrict(addressDTO.getDistrict());
+		entity.setCity(addressDTO.getCity());
+		entity.setState(addressDTO.getState());
+		entity.setCep(addressDTO.getCep());
+	
+	}
 }

@@ -16,9 +16,9 @@ import com.conquistsuavaga.custoregis.service.exceptions.ResourceNotFoundExcepti
 @Service
 public class PhoneService {
 
-	@Autowired	
+	@Autowired
 	private PhoneRepository phoneRepository;
-	
+
 	@Transactional(readOnly = true)
 	public List<PhoneDTO> findAll() {
 		List<Phone> phoneList = phoneRepository.findAll();
@@ -31,5 +31,17 @@ public class PhoneService {
 		Phone phone = obj.orElseThrow(() -> new ResourceNotFoundException("Id not found"));
 		return new PhoneDTO(phone);
 	}
+
+	public PhoneDTO insert(PhoneDTO phoneDTO) {
+		
+		Phone entity = new Phone();
+		entity.setNumber(phoneDTO.getNumber());
+		entity.setType(phoneDTO.getType());
+		entity = phoneRepository.save(entity);
+		
+		return new PhoneDTO(entity);
+	}
+
+	
 
 }

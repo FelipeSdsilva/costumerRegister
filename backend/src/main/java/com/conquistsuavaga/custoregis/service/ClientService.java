@@ -30,4 +30,25 @@ public class ClientService {
 		Client client= obj.orElseThrow(() -> new ResourceNotFoundException("Id not found"));
 		return new ClientDTO(client);
 	}
+
+	public ClientDTO insert(ClientDTO clientDTO) {
+		Client entity = new Client();
+		converterDtoInEntity(clientDTO,entity);
+		entity = clientRepository.save(entity);
+		return new ClientDTO(entity);
+	}
+
+	private void converterDtoInEntity(ClientDTO clientDTO, Client entity) {
+		
+		entity.setName(clientDTO.getName());
+		entity.setLastName(clientDTO.getLastName());
+		entity.setEmail(clientDTO.getEmail());
+		entity.setGender(clientDTO.getGender());
+		entity.setCpf(clientDTO.getCpf());
+		entity.setBirthDate(clientDTO.getBirthDate());
+		entity.setNumberHouse(clientDTO.getNumberHouse());
+		entity.setComplement(clientDTO.getComplement());
+		
+		
+	}
 }

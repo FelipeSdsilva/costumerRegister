@@ -27,7 +27,7 @@ public class Client implements Serializable {
 	private String name;
 	private String lastName;
 	private String email;
-	private char gender;
+	private String gender;
 	private String cpf;
 	
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
@@ -50,7 +50,7 @@ public class Client implements Serializable {
 	public Client() {
 	}
 
-	public Client(Long id, String name, String lastName, String email, char gender, String cpf, Instant birthDate,
+	public Client(Long id, String name, String lastName, String email, String gender, String cpf, Instant birthDate,
 			Integer numberHouse, String complement) {
 		this.id = id;
 		this.name = name;
@@ -95,11 +95,11 @@ public class Client implements Serializable {
 		this.email = email;
 	}
 
-	public char getGender() {
+	public String getGender() {
 		return gender;
 	}
 
-	public void setGender(char gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 
