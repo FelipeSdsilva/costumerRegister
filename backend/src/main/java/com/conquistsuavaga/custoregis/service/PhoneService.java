@@ -7,12 +7,15 @@ import java.util.stream.Collectors;
 import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.conquistsuavaga.custoregis.dto.PhoneDTO;
 import com.conquistsuavaga.custoregis.entities.Phone;
 import com.conquistsuavaga.custoregis.repositories.PhoneRepository;
+import com.conquistsuavaga.custoregis.service.exceptions.DatabaseException;
 import com.conquistsuavaga.custoregis.service.exceptions.ResourceNotFoundException;
 
 @Service
@@ -45,13 +48,23 @@ public class PhoneService {
 	@Transactional
 	public PhoneDTO update(Long id, PhoneDTO phoneDTO) {
 		try {
-			Phone entity = new Phone();
+			Phone entity = phoneRepository.getReferenceById(id);
 			entity.setNumber(phoneDTO.getNumber());
 			entity.setType(phoneDTO.getType());
 			entity = phoneRepository.save(entity);
 			return new PhoneDTO(entity);
 		} catch (EntityNotFoundException e) {
-			throw new ResourceNotFoundException("Id not found" + id);
+			throw new ResourceNotFoundException("Id not found " + id);
+		}catch(DataIntegrityViolationException e) {
+			throw new DatabaseException("Integrity violantion ");
+		}
+	}
+
+	public void delete(Long id) {
+		try {
+			phoneRepository.deleteById(id);
+		} catch (EmptyResultDataAccessException e) {
+			throw new ResourceNotFoundException("Id not found " + id);
 		}
 	}
 }

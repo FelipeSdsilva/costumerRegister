@@ -1,9 +1,9 @@
 package com.conquistsuavaga.custoregis.service.exceptions;
 
-public class ResourceNotFoundException extends RuntimeException {
+public class DatabaseException extends RuntimeException {
 	private static final long serialVersionUID = 1L;
 
-	public ResourceNotFoundException(String msg) {
+	public DatabaseException(String msg) {
 		super(msg);
 	}
 }

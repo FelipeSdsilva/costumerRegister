@@ -22,17 +22,17 @@ INSERT INTO tb_address(street, district, city, state, cep) VALUES ('R Campevas',
 INSERT INTO tb_address(street, district, city, state, cep) VALUES ('R Stefan Zweig','Parque Jabaquara','São Paulo','SP','04355060');
 
 
-INSERT INTO tb_address_client(client_id, address_id) VALUES (1,2);
-INSERT INTO tb_address_client(client_id, address_id) VALUES (1,3);
-INSERT INTO tb_address_client(client_id, address_id) VALUES (2,4);
-INSERT INTO tb_address_client(client_id, address_id) VALUES (2,5);
-INSERT INTO tb_address_client(client_id, address_id) VALUES (3,1);
-INSERT INTO tb_address_client(client_id, address_id) VALUES (4,9);
-INSERT INTO tb_address_client(client_id, address_id) VALUES (8,8);
-INSERT INTO tb_address_client(client_id, address_id) VALUES (7,10);
-INSERT INTO tb_address_client(client_id, address_id) VALUES (5,11);
-INSERT INTO tb_address_client(client_id, address_id) VALUES (9,7);
-INSERT INTO tb_address_client(client_id, address_id) VALUES (10,6);
+INSERT INTO tb_client_address(client_id, address_id) VALUES (1,2);
+INSERT INTO tb_client_address(client_id, address_id) VALUES (1,3);
+INSERT INTO tb_client_address(client_id, address_id) VALUES (2,4);
+INSERT INTO tb_client_address(client_id, address_id) VALUES (2,5);
+INSERT INTO tb_client_address(client_id, address_id) VALUES (3,1);
+INSERT INTO tb_client_address(client_id, address_id) VALUES (4,9);
+INSERT INTO tb_client_address(client_id, address_id) VALUES (8,8);
+INSERT INTO tb_client_address(client_id, address_id) VALUES (7,10);
+INSERT INTO tb_client_address(client_id, address_id) VALUES (5,11);
+INSERT INTO tb_client_address(client_id, address_id) VALUES (9,7);
+INSERT INTO tb_client_address(client_id, address_id) VALUES (10,6);
 
 INSERT INTO tb_phone(type,number) VALUES (1,'11 25989844'); 
 INSERT INTO tb_phone(type,number) VALUES (2,'11 25543232');
@@ -45,13 +45,13 @@ INSERT INTO tb_phone(type,number) VALUES (1,'11 24744774');
 INSERT INTO tb_phone(type,number) VALUES (1,'11 22548474');
 INSERT INTO tb_phone(type,number) VALUES (1,'11 25554144');
 
-INSERT INTO tb_phone_client(client_id, phone_id) VALUES (1,10);
-INSERT INTO tb_phone_client(client_id, phone_id) VALUES (2,9);
-INSERT INTO tb_phone_client(client_id, phone_id) VALUES (3,8);
-INSERT INTO tb_phone_client(client_id, phone_id) VALUES (4,7);
-INSERT INTO tb_phone_client(client_id, phone_id) VALUES (5,6);
-INSERT INTO tb_phone_client(client_id, phone_id) VALUES (6,5);
-INSERT INTO tb_phone_client(client_id, phone_id) VALUES (7,4);
-INSERT INTO tb_phone_client(client_id, phone_id) VALUES (8,3);
-INSERT INTO tb_phone_client(client_id, phone_id) VALUES (9,2);
-INSERT INTO tb_phone_client(client_id, phone_id) VALUES (10,1);
+INSERT INTO tb_client_phone(client_id, phone_id) VALUES (1,10);
+INSERT INTO tb_client_phone(client_id, phone_id) VALUES (2,9);
+INSERT INTO tb_client_phone(client_id, phone_id) VALUES (3,8);
+INSERT INTO tb_client_phone(client_id, phone_id) VALUES (4,7);
+INSERT INTO tb_client_phone(client_id, phone_id) VALUES (5,6);
+INSERT INTO tb_client_phone(client_id, phone_id) VALUES (6,5);
+INSERT INTO tb_client_phone(client_id, phone_id) VALUES (7,4);
+INSERT INTO tb_client_phone(client_id, phone_id) VALUES (8,3);
+INSERT INTO tb_client_phone(client_id, phone_id) VALUES (9,2);
+INSERT INTO tb_client_phone(client_id, phone_id) VALUES (10,1);

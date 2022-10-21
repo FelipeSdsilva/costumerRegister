@@ -7,12 +7,15 @@ import java.util.stream.Collectors;
 import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.conquistsuavaga.custoregis.dto.AddressDTO;
 import com.conquistsuavaga.custoregis.entities.Address;
 import com.conquistsuavaga.custoregis.repositories.AddressRepository;
+import com.conquistsuavaga.custoregis.service.exceptions.DatabaseException;
 import com.conquistsuavaga.custoregis.service.exceptions.ResourceNotFoundException;
 
 @Service
@@ -20,7 +23,7 @@ public class AddressService {
 
 	@Autowired
 	private AddressRepository addressRepository;
-	
+
 	@Transactional(readOnly = true)
 	public List<AddressDTO> findAll() {
 		List<Address> addressList = addressRepository.findAll();
@@ -37,7 +40,7 @@ public class AddressService {
 	@Transactional
 	public AddressDTO insert(AddressDTO addressDTO) {
 		Address entity = new Address();
-		converterDtoInEntity(addressDTO,entity);
+		converterDtoInEntity(addressDTO, entity);
 		entity = addressRepository.save(entity);
 		return new AddressDTO(entity);
 	}
@@ -50,17 +53,28 @@ public class AddressService {
 			entity = addressRepository.save(entity);
 			return new AddressDTO(entity);
 		} catch (EntityNotFoundException e) {
-			throw new ResourceNotFoundException("Id not found" + id);
+			throw new ResourceNotFoundException("Id not found " + id);
 		}
 	}
-	
+
+	public void delete(Long id) {
+		try {
+			addressRepository.deleteById(id);
+		} catch (EmptyResultDataAccessException e) {
+			throw new ResourceNotFoundException("Id not found " + id);
+		}catch(DataIntegrityViolationException e) {
+			throw new DatabaseException("Integrity violantion ");
+		}
+	}
+
 	private void converterDtoInEntity(AddressDTO addressDTO, Address entity) {
-		
+
 		entity.setStreet(addressDTO.getStreet());
 		entity.setDistrict(addressDTO.getDistrict());
 		entity.setCity(addressDTO.getCity());
 		entity.setState(addressDTO.getState());
 		entity.setCep(addressDTO.getCep());
-	
+
 	}
+
 }

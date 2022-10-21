@@ -36,13 +36,13 @@ public class Client implements Serializable {
 	private String complement;
 
 	@ManyToMany
-	@JoinTable(name = "tb_address_client",
+	@JoinTable(name = "tb_client_address",
 	joinColumns = @JoinColumn(name = "client_id"),
 	inverseJoinColumns = @JoinColumn(name = "address_id"))
 	private Set<Address> adresses = new HashSet<>();
 
 	@ManyToMany
-	@JoinTable(name = "tb_phone_client",
+	@JoinTable(name = "tb_client_phone",
 	joinColumns = @JoinColumn(name = "client_id"),
 	inverseJoinColumns = @JoinColumn(name = "phone_id"))
 	private Set<Phone> phones = new HashSet<>();

@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,6 +21,7 @@ import com.conquistsuavaga.custoregis.entities.Phone;
 import com.conquistsuavaga.custoregis.repositories.AddressRepository;
 import com.conquistsuavaga.custoregis.repositories.ClientRepository;
 import com.conquistsuavaga.custoregis.repositories.PhoneRepository;
+import com.conquistsuavaga.custoregis.service.exceptions.DatabaseException;
 import com.conquistsuavaga.custoregis.service.exceptions.ResourceNotFoundException;
 
 @Service
@@ -61,9 +64,19 @@ public class ClientService {
 			converterDtoInEntity(clientDTO, entity);
 			entity = clientRepository.save(entity);
 			return new ClientDTO(entity);
-		} 
-		catch (EntityNotFoundException e) {
+		} catch (EntityNotFoundException e) {
 			throw new ResourceNotFoundException("Id not found" + id);
+		}
+	}
+
+	public void delete(Long id) {
+		try {
+			clientRepository.deleteById(id);
+		} catch (EmptyResultDataAccessException e) {
+			throw new ResourceNotFoundException("Id not found " + id );
+		}
+		catch(DataIntegrityViolationException e) {
+			throw new DatabaseException("Integrity violantion ");
 		}
 	}
 
@@ -95,4 +108,5 @@ public class ClientService {
 		}
 
 	}
+
 }

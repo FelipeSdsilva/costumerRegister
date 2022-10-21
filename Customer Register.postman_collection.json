@@ -1,0 +1,334 @@
+{
+	"info": {
+		"_postman_id": "445fecb5-3c83-4890-9937-d8d9eede88c4",
+		"name": "Customer Register",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14866871"
+	},
+	"item": [
+		{
+			"name": "Client",
+			"item": [
+				{
+					"name": "All clients",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/clients",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"clients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Client by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/clients/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"clients",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New client",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Maria\",\r\n    \"lastName\": \"Silva\",\r\n    \"email\": \"maria@gmail.com\",\r\n    \"gender\": \"f\",\r\n    \"cpf\": \"84849577789\",\r\n    \"birthDate\": \"1994-07-14T10:00:00Z\",\r\n    \"numberHouse\": 45,\r\n    \"complement\": \"casa\",\r\n    \"adresses\": [\r\n        {\r\n            \"id\": 12\r\n        }\r\n    ],\r\n    \"phones\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/clients",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"clients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update client",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"name\": \"Joao\",\r\n        \"lastName\": \"Silva\",\r\n        \"email\": \"joao@gmail.com\",\r\n        \"gender\": \"m\",\r\n        \"cpf\": \"00009577789\",\r\n        \"birthDate\": \"2020-07-14T10:00:00Z\",\r\n        \"numberHouse\": 45,\r\n        \"complement\": \"casa\",\r\n        \"adresses\": [],\r\n        \"phones\": []\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/clients/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"clients",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete client",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/clients/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"clients",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Address",
+			"item": [
+				{
+					"name": "All adresses",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/adresses",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"adresses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Address by id",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "New address",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"street\": \"R Cubatão\",\r\n    \"district\": \"Vila Mariana\",\r\n    \"city\": \"São Paulo\",\r\n    \"state\": \"SP\",\r\n    \"cep\": \"04013040\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/adresses",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"adresses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update address",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"street\": \"R Cubatão\",\r\n    \"number\": null,\r\n    \"district\": \"Vila Mariana\",\r\n    \"city\": \"São Paulo\",\r\n    \"state\": \"SP\",\r\n    \"cep\": \"04013040\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/adresses/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"adresses",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete address",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/adresses",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"adresses"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Phone",
+			"item": [
+				{
+					"name": "All phones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/phones",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"phones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Phone by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/phones/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"phones",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New phone",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"HOME\",\r\n    \"number\": \"11 25989844\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/phones",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"phones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update phone",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"HOME\",\r\n    \"number\": \"11 25989844\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/phones/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"phones",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete phone",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/phones/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"phones",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
