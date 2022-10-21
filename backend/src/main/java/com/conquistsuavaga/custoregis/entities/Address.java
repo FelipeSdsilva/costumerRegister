@@ -28,7 +28,7 @@ public class Address implements Serializable {
 
 	@ManyToMany(mappedBy = "adresses")
 	private Set<Client> clients = new HashSet<>();
-
+	
 	public Address() {
 	}
 
@@ -40,7 +40,7 @@ public class Address implements Serializable {
 		this.state = state;
 		this.cep = cep;
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -88,7 +88,7 @@ public class Address implements Serializable {
 	public void setCep(String cep) {
 		this.cep = cep;
 	}
-
+		
 	public Set<Client> getClients() {
 		return clients;
 	}

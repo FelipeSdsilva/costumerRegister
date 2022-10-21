@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,15 +35,23 @@ public class PhoneService {
 	}
 
 	public PhoneDTO insert(PhoneDTO phoneDTO) {
-		
 		Phone entity = new Phone();
 		entity.setNumber(phoneDTO.getNumber());
 		entity.setType(phoneDTO.getType());
 		entity = phoneRepository.save(entity);
-		
 		return new PhoneDTO(entity);
 	}
 
-	
-
+	@Transactional
+	public PhoneDTO update(Long id, PhoneDTO phoneDTO) {
+		try {
+			Phone entity = new Phone();
+			entity.setNumber(phoneDTO.getNumber());
+			entity.setType(phoneDTO.getType());
+			entity = phoneRepository.save(entity);
+			return new PhoneDTO(entity);
+		} catch (EntityNotFoundException e) {
+			throw new ResourceNotFoundException("Id not found" + id);
+		}
+	}
 }

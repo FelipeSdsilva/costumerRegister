@@ -27,7 +27,7 @@ public class Phone implements Serializable {
 
 	@ManyToMany(mappedBy = "phones")
 	private Set<Client> clients = new HashSet<>();
-
+	
 	public Phone() {
 	}
 
