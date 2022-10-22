@@ -11,9 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -35,16 +33,10 @@ public class Client implements Serializable {
 	private Integer numberHouse;
 	private String complement;
 
-	@ManyToMany
-	@JoinTable(name = "tb_client_address",
-	joinColumns = @JoinColumn(name = "client_id"),
-	inverseJoinColumns = @JoinColumn(name = "address_id"))
+	@ManyToOne
 	private Set<Address> adresses = new HashSet<>();
 
-	@ManyToMany
-	@JoinTable(name = "tb_client_phone",
-	joinColumns = @JoinColumn(name = "client_id"),
-	inverseJoinColumns = @JoinColumn(name = "phone_id"))
+	@ManyToOne
 	private Set<Phone> phones = new HashSet<>();
 
 	public Client() {
